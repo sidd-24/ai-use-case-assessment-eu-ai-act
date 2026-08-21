@@ -1,0 +1,9 @@
+use_case_id,name,business_area,description,revenue_impact,cost_saving_impact,strategic_alignment,data_exists,data_quality,data_accessibility,tech_maturity,team_skill_fit,integration_ease,cost_estimate,time_estimate
+UC001,Churn Prediction Model,Sales,Predict which customers are likely to cancel their subscription,4,4,5,5,4,4,4,4,3,3,3
+UC002,Invoice Processing Automation,Finance,Automatically extract and validate data from vendor invoices,3,5,3,5,5,5,5,5,4,4,4
+UC003,Resume Screening Assistant,HR,Rank incoming job applications based on role fit,2,3,4,4,3,3,3,3,3,4,4
+UC004,Predictive Maintenance,Operations,Predict equipment failure before it happens using sensor data,5,5,4,2,2,2,2,3,2,2,2
+UC005,Sales Forecast Dashboard,Sales,Forecast next quarter sales by region and product line,4,3,4,5,4,5,5,4,5,5,5
+UC006,Employee Attrition Risk Score,HR,Flag employees at risk of leaving based on HR data patterns,2,3,3,3,3,3,3,3,3,4,4
+UC007,Chatbot for IT Support Tickets,Operations,Auto respond to common internal IT support requests,2,4,3,4,4,4,4,4,4,4,4
+UC008,Dynamic Pricing Engine,Sales,Adjust product pricing in real time based on demand signals,5,4,5,3,3,2,3,3,2,2,2

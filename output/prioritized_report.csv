@@ -1,0 +1,9 @@
+use_case_id,name,business_area,business_impact,data_availability,technical_feasibility,cost_effort,final_score,priority
+UC005,Sales Forecast Dashboard,Sales,3.67,4.67,4.67,5.0,4.37,High Priority
+UC002,Invoice Processing Automation,Finance,3.67,5.0,4.67,4.0,4.3,High Priority
+UC001,Churn Prediction Model,Sales,4.33,4.33,3.67,3.0,3.97,Medium Priority
+UC007,Chatbot for IT Support Tickets,Operations,3.0,4.0,4.0,4.0,3.65,Medium Priority
+UC008,Dynamic Pricing Engine,Sales,4.67,2.67,2.67,2.0,3.27,Medium Priority
+UC003,Resume Screening Assistant,HR,3.0,3.33,3.0,4.0,3.23,Medium Priority
+UC006,Employee Attrition Risk Score,HR,2.67,3.0,3.0,4.0,3.03,Medium Priority
+UC004,Predictive Maintenance,Operations,4.67,2.0,2.33,2.0,3.02,Medium Priority
