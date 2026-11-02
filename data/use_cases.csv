@@ -7,3 +7,7 @@ UC005,Sales Forecast Dashboard,Sales,Forecast next quarter sales by region and p
 UC006,Employee Attrition Risk Score,HR,Flag employees at risk of leaving based on HR data patterns,2,3,3,3,3,3,3,3,3,4,4
 UC007,Chatbot for IT Support Tickets,Operations,Auto respond to common internal IT support requests,2,4,3,4,4,4,4,4,4,4,4
 UC008,Dynamic Pricing Engine,Sales,Adjust product pricing in real time based on demand signals,5,4,5,3,3,2,3,3,2,2,2
+UC009,Call Centre Emotion Monitoring,Customer Service,Detect stress and emotions of call centre agents from call audio to manage performance,2,3,2,4,3,3,3,2,3,3,3
+UC010,Consumer Credit Limit Scoring,Finance,Score the creditworthiness of private customers to set credit limits for financing,4,3,4,4,4,4,4,3,3,3,3
+UC011,Visual Wafer Defect Inspection,Operations,Classify defects on end-of-line inspection images before shipment,3,5,5,4,4,3,4,4,3,3,3
+UC012,Marketing Image Generator,Marketing,Generate campaign images and ad copy with a generative AI tool,3,4,3,3,3,4,5,4,4,4,5

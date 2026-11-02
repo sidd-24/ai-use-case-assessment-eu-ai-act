@@ -2,18 +2,23 @@
 main.py
 
 This is the entry point of the project.
-It loads the use case data, scores each one, ranks them,
-and saves a prioritized report as a CSV file.
+It loads the use cases and their risk questionnaires, scores and
+classifies each one, ranks them, and saves the portfolio reports.
 
 Run it with:
     python main.py
 """
 
 import csv
-from scoring import score_use_case, priority_tier
+from pathlib import Path
+
+from portfolio import build_portfolio
+from report import save_matrix, write_excel, write_pdf
 
 INPUT_FILE = "data/use_cases.csv"
-OUTPUT_FILE = "output/prioritized_report.csv"
+RISK_FILE = "data/risk_profile.csv"
+OUTPUT_DIR = Path("output")
+OUTPUT_FILE = OUTPUT_DIR / "prioritized_report.csv"
 
 # Columns that hold raw scores, these need to be read as numbers
 SCORE_COLUMNS = [
@@ -36,27 +41,12 @@ def load_use_cases(path):
     return use_cases
 
 
-def build_report(use_cases):
-    """Score every use case and return the report rows, sorted best first."""
-    report_rows = []
-
-    for case in use_cases:
-        scores = score_use_case(case)
-        row = {
-            "use_case_id": case["use_case_id"],
-            "name": case["name"],
-            "business_area": case["business_area"],
-            "business_impact": scores["business_impact"],
-            "data_availability": scores["data_availability"],
-            "technical_feasibility": scores["technical_feasibility"],
-            "cost_effort": scores["cost_effort"],
-            "final_score": scores["final_score"],
-            "priority": priority_tier(scores["final_score"]),
-        }
-        report_rows.append(row)
-
-    report_rows.sort(key=lambda r: r["final_score"], reverse=True)
-    return report_rows
+def load_risk_profiles(path):
+    """Read the risk questionnaire and return a dictionary keyed by use case id."""
+    if not Path(path).exists():
+        return {}
+    with open(path, "r", newline="", encoding="utf-8") as f:
+        return {row["use_case_id"]: {k: v.strip() for k, v in row.items()} for row in csv.DictReader(f)}
 
 
 def save_report(report_rows, path):
@@ -65,30 +55,42 @@ def save_report(report_rows, path):
         "use_case_id", "name", "business_area",
         "business_impact", "data_availability",
         "technical_feasibility", "cost_effort",
-        "final_score", "priority",
+        "final_score", "compliance_overhead", "adjusted_score", "priority",
+        "quadrant", "ai_act_tier", "ai_act_basis", "dpia", "fria", "gate",
     ]
     with open(path, "w", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=fieldnames)
+        writer = csv.DictWriter(f, fieldnames=fieldnames, extrasaction="ignore")
         writer.writeheader()
         writer.writerows(report_rows)
 
 
 def print_summary(report_rows):
     """Print a simple ranked summary to the terminal."""
-    print("\nUse Case Prioritization Report")
-    print("=" * 60)
+    print("\nUse Case Portfolio Report")
+    print("=" * 72)
     for i, row in enumerate(report_rows, start=1):
         print(f"{i}. {row['name']} ({row['business_area']})")
-        print(f"   Final Score: {row['final_score']} / 5  -  {row['priority']}")
-    print("=" * 60)
+        print(f"   Score: {row['adjusted_score']} / 5 (before compliance {row['final_score']})"
+              f"  -  {row['priority']}  -  {row['quadrant']}")
+        print(f"   AI Act: {row['ai_act_tier']}  |  DPIA: {row['dpia']}  |  Gate: {row['gate']}")
+        if row["conditions"]:
+            print(f"   Conditions: {'; '.join(row['conditions'])}")
+    print("=" * 72)
 
 
 def main():
     use_cases = load_use_cases(INPUT_FILE)
-    report_rows = build_report(use_cases)
+    profiles = load_risk_profiles(RISK_FILE)
+    report_rows = build_portfolio(use_cases, profiles)
+
+    OUTPUT_DIR.mkdir(exist_ok=True)
     save_report(report_rows, OUTPUT_FILE)
+    matrix = save_matrix(report_rows, OUTPUT_DIR / "portfolio_matrix.png")
+    workbook = write_excel(report_rows, OUTPUT_DIR / "AI_Use_Case_Portfolio.xlsx", matrix)
+    one_pager = write_pdf(report_rows, OUTPUT_DIR / "steering_one_pager.pdf")
+
     print_summary(report_rows)
-    print(f"\nFull report saved to {OUTPUT_FILE}")
+    print(f"\nReports saved to {OUTPUT_FILE}, {workbook}, {one_pager} and {matrix}")
 
 
 if __name__ == "__main__":

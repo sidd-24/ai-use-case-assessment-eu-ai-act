@@ -1,9 +1,13 @@
-use_case_id,name,business_area,business_impact,data_availability,technical_feasibility,cost_effort,final_score,priority
-UC005,Sales Forecast Dashboard,Sales,3.67,4.67,4.67,5.0,4.37,High Priority
-UC002,Invoice Processing Automation,Finance,3.67,5.0,4.67,4.0,4.3,High Priority
-UC001,Churn Prediction Model,Sales,4.33,4.33,3.67,3.0,3.97,Medium Priority
-UC007,Chatbot for IT Support Tickets,Operations,3.0,4.0,4.0,4.0,3.65,Medium Priority
-UC008,Dynamic Pricing Engine,Sales,4.67,2.67,2.67,2.0,3.27,Medium Priority
-UC003,Resume Screening Assistant,HR,3.0,3.33,3.0,4.0,3.23,Medium Priority
-UC006,Employee Attrition Risk Score,HR,2.67,3.0,3.0,4.0,3.03,Medium Priority
-UC004,Predictive Maintenance,Operations,4.67,2.0,2.33,2.0,3.02,Medium Priority
+use_case_id,name,business_area,business_impact,data_availability,technical_feasibility,cost_effort,final_score,compliance_overhead,adjusted_score,priority,quadrant,ai_act_tier,ai_act_basis,dpia,fria,gate
+UC005,Sales Forecast Dashboard,Sales,3.67,4.67,4.67,5.0,4.37,0.0,4.37,High Priority,Quick win,Out of scope,Not an AI system under Art. 3(1),Not applicable,False,Go
+UC002,Invoice Processing Automation,Finance,3.67,5.0,4.67,4.0,4.3,0.0,4.3,High Priority,Quick win,Minimal,No specific obligations under the AI Act,Not required,False,Go
+UC001,Churn Prediction Model,Sales,4.33,4.33,3.67,3.0,3.97,0.25,3.8,Medium Priority,Quick win,Minimal,No specific obligations under the AI Act,Required,False,Go with conditions
+UC011,Visual Wafer Defect Inspection,Operations,4.33,3.67,3.67,3.0,3.8,0.0,3.8,Medium Priority,Quick win,Minimal,No specific obligations under the AI Act,Not applicable,False,Go
+UC012,Marketing Image Generator,Marketing,3.33,3.33,4.33,4.5,3.76,0.1,3.69,Medium Priority,Quick win,Limited,Art. 50 transparency obligations,Not applicable,False,Go with conditions
+UC007,Chatbot for IT Support Tickets,Operations,3.0,4.0,4.0,4.0,3.65,0.25,3.49,Medium Priority,Quick win,Limited,Art. 50 transparency obligations,Screening recommended,False,Go with conditions
+UC008,Dynamic Pricing Engine,Sales,4.67,2.67,2.67,2.0,3.27,0.0,3.27,Medium Priority,Strategic bet,Minimal,No specific obligations under the AI Act,Not applicable,False,Go
+UC004,Predictive Maintenance,Operations,4.67,2.0,2.33,2.0,3.02,0.0,3.02,Medium Priority,Strategic bet,Minimal,No specific obligations under the AI Act,Not applicable,False,Go
+UC010,Consumer Credit Limit Scoring,Finance,3.67,4.0,3.33,3.0,3.57,1.5,2.59,Low Priority,Strategic bet,High-risk,"Art. 6(2), Annex III(5)(b) creditworthiness and credit scoring",Required,True,Go with conditions
+UC003,Resume Screening Assistant,HR,3.0,3.33,3.0,4.0,3.23,1.25,2.42,Low Priority,Strategic bet,High-risk,"Art. 6(2), Annex III(4) employment and workers management",Required,False,Go with conditions
+UC006,Employee Attrition Risk Score,HR,2.67,3.0,3.0,4.0,3.03,1.25,2.22,Low Priority,Deprioritise,High-risk,"Art. 6(2), Annex III(4) employment and workers management",Required,False,Go with conditions
+UC009,Call Centre Emotion Monitoring,Customer Service,2.33,3.33,2.67,3.0,2.77,0.25,2.6,Blocked,Deprioritise,Prohibited,Art. 5(1)(f) emotion recognition in the workplace or education,Required,False,Stop

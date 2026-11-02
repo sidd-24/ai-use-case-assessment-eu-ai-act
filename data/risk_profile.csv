@@ -1,0 +1,13 @@
+use_case_id,role,is_ai_system,prohibited_practice,annex_iii_area,safety_component,profiling,narrow_procedural_task,interacts_with_people,generates_synthetic_content,public_body,personal_data,special_category_data,automated_decision,systematic_monitoring,large_scale,combines_datasets,vulnerable_subjects,innovative_technology
+UC001,provider,yes,none,none,no,yes,no,no,no,no,yes,no,no,no,yes,yes,no,no
+UC002,provider,yes,none,none,no,no,no,no,no,no,yes,no,no,no,no,no,no,no
+UC003,provider,yes,none,employment,no,yes,no,no,no,no,yes,no,no,no,no,no,yes,yes
+UC004,provider,yes,none,none,no,no,no,no,no,no,no,no,no,no,no,no,no,no
+UC005,provider,no,none,none,no,no,no,no,no,no,no,no,no,no,no,no,no,no
+UC006,provider,yes,none,employment,no,yes,no,no,no,no,yes,no,no,no,no,yes,yes,no
+UC007,provider,yes,none,none,no,no,no,yes,yes,no,yes,no,no,no,no,no,no,yes
+UC008,provider,yes,none,none,no,no,no,no,no,no,no,no,no,no,no,no,no,no
+UC009,deployer,yes,emotion_recognition_workplace,none,no,yes,no,no,no,no,yes,yes,no,yes,no,no,yes,yes
+UC010,provider,yes,none,credit_scoring,no,yes,no,no,no,no,yes,no,yes,no,yes,yes,no,no
+UC011,provider,yes,none,none,no,no,no,no,no,no,no,no,no,no,no,no,no,no
+UC012,deployer,yes,none,none,no,no,no,no,yes,no,no,no,no,no,no,no,no,no
